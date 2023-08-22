@@ -1,2 +1,3 @@
-# mapping_ws
-ROS Workspace for LIdar Mapping
+# Backup for Lidar Mapping Workspace from Spirit Computer
+
+ROS Workspace for Lidar Mapping
