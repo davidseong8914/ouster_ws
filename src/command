@@ -1,0 +1,11 @@
+source devel/setup.bash
+roslaunch mocap_optitrack mocap.launch
+roslaunch ouster_ros sensor.launch sensor_hostname:=os-122227002359.local timestamp_mode:=TIME_FROM_ROS_TIME
+roslaunch octomap_server octomap_mapping_nodelet.launch
+rosrun octomap_server octomap_saver -f test_octomap.bt
+
+roscore
+rosrun rviz rviz
+roslaunch grid_map_octomap convert.launch 
+
+

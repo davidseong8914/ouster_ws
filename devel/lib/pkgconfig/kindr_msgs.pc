@@ -1,0 +1,8 @@
+prefix=/home/rml/mapping_ws/devel
+
+Name: kindr_msgs
+Description: Description of kindr_msgs
+Version: 0.3.0
+Cflags: -I/home/rml/mapping_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime geometry_msgs std_msgs
