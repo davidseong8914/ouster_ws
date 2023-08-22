@@ -1,0 +1,4 @@
+ <launch>
+    <rosparam command="load" file="$(find grid_map_octomap)/config/filter_chain.yaml" />
+    <node pkg="grid_map_octomap" type="convert_node" name="convert_node" output="screen"/>
+ </launch>

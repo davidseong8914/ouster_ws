@@ -1,0 +1,43 @@
+grid_map_filters:
+    # Duplicate layer.
+  # - name: duplicate_z
+  #   type: gridMapFilters/DuplicationFilter
+  #   params:
+  #     input_layer: elevation
+  #     output_layer: z_finite
+
+  # Fill holes in the map with inpainting.
+  - name: inpaint
+    type: gridMapCv/InpaintFilter
+    params:
+      input_layer: elevation
+      output_layer: z_inpainted
+      radius: 0.2
+
+  # Reduce noise with a radial blurring filter.
+  - name: mean_in_radius
+    type: gridMapFilters/MeanInRadiusFilter
+    params:
+      input_layer: z_inpainted
+      output_layer: z_smooth
+      radius: 0.04
+
+  # Compute surface normals.
+  # - name: surface_normals
+  #   type: gridMapFilters/NormalVectorsFilter
+  #   params:
+  #     input_layer: z_inpainted
+  #     output_layers_prefix: normal_vectors_
+  #     radius: 0.05
+  #     normal_vector_positive_axis: z
+
+  # # Compute smooth surface normals.
+  # - name: smooth_surface_normals
+  #   type: gridMapFilters/NormalVectorsFilter
+  #   params:
+  #     input_layer: z_smooth
+  #     output_layers_prefix: smooth_normal_vectors_
+  #     radius: 0.05
+  #     normal_vector_positive_axis: z
+
+ 

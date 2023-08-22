@@ -1,0 +1,45 @@
+<launch>
+
+  <arg name="pose_source" default="t265" />
+
+  <!-- Launch realsense demo node -->
+  <include file="$(find realsense2_camera)/launch/rs_d400_and_t265.launch" >
+    <arg name='clip_distance' value='2'/>
+  </include>
+
+  <!-- Publish tf 'base_footprint' as pose.-->
+  <node pkg="elevation_mapping_demos" type="tf_to_pose_publisher.py" name="camera_pose_publisher">
+    <param name="from_frame" type="string" value="t265_odom_frame" />
+    <param name="to_frame"   type="string" value="t265_pose_frame" />
+  </node>
+
+  <group if="$(eval arg('pose_source') == 'mocap')" >
+    <node name="mocap_node"
+        pkg="mocap_optitrack"
+        type="mocap_node"
+        respawn="false"
+        launch-prefix=""
+        required="true">
+      <rosparam file="$(find mocap_optitrack)/config/mocap_camera.yaml" />
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="t265_pose_frame_to_link" args="0 0 0 0 0 0 /t265_pose_frame /t265_link 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="map_to_t265_odom_frame" args="0 0 0 0 0 0 /map /t265_odom_frame 100"/>
+
+  </group>
+
+  <!-- Elevation mapping node -->
+  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen">
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/robots/rml_demo_robot.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/elevation_maps/rml_demo_map.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/realsense_d435.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping_demos)/config/postprocessing/rml_postprocessor_pipeline.yaml" />
+  </node>
+
+  <!-- Launch visualizations for the resulting elevation map -->
+  <include file="$(find elevation_mapping_demos)/launch/visualization.launch" />
+
+  <!-- Launch RViz with the demo configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find elevation_mapping_demos)/rviz/rml_elevation_map_visualization.rviz" />
+
+</launch>

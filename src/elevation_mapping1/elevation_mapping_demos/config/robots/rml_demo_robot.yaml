@@ -1,0 +1,12 @@
+point_cloud_topic: "/d400/depth/color/points"
+map_frame_id: "t265_odom_frame"
+robot_base_frame_id: "t265_pose_frame"
+robot_pose_with_covariance_topic: "/t265_pose_frame_pose"
+robot_pose_cache_size: 200
+track_point_frame_id: "t265_pose_frame"
+track_point_x: 1.0
+track_point_y: 0.0
+track_point_z: 0.0
+min_update_rate: 30.0
+fused_map_publishing_rate: 10.0
+# postprocessor_pipeline_name: rml_postprocessor_pipeline

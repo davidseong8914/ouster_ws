@@ -1,0 +1,41 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/rml/mapping_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/rml/catkin_ws/devel/include/**",
+        "/home/rml/mapping_ws/src/elevation_mapping/elevation_mapping/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/quad_simulator/gazebo_scripts/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/global_body_planner/include/**",
+        "/home/rml/mapping_ws/src/grid_map/grid_map_octomap/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/external/grid_map_pcl/include/**",
+        "/home/rml/mapping_ws/src/kindr/include/**",
+        "/home/rml/mapping_ws/src/kindr_ros/kindr_ros/include/**",
+        "/home/rml/mapping_ws/src/kindr_ros/kindr_rviz_plugins/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/local_planner/include/**",
+        "/home/rml/mapping_ws/src/mocap_optitrack/include/**",
+        "/home/rml/mapping_ws/src/kindr_ros/multi_dof_joint_trajectory_rviz_plugins/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/nmpc_controller/include/**",
+        "/home/rml/catkin_ws/src/octomap_rviz_plugins/include/**",
+        "/home/rml/mapping_ws/src/octomap_mapping/octomap_server/include/**",
+        "/home/rml/mapping_ws/src/ouster-ros/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/quad_utils/include/**",
+        "/home/rml/mapping_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/robot_driver/include/**",
+        "/home/rml/catkin_ws/src/quad-sdk/external/teleop_twist_joy/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
